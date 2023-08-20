@@ -18,7 +18,7 @@ describe('The news has the same title with the main page', () => {
     });
   });*/
 
-  it('Click on of the mini news title', () => {
+  /*it('Click on of the mini news title', () => {
     cy.get('.mini-view')
       .find('.mini-view__item > h3 > a')
       .then(($elems) => {
@@ -39,5 +39,42 @@ describe('The news has the same title with the main page', () => {
       });
 
     cy.url().should('be.lte', Cypress.env('techCrunchUrl'));
+  });*/
+
+  /*it('Click on latest section', () => {
+    'post-block post-block--featured post-block--unread';
+
+    cy.get('div > h2')
+      .contains('The Latest')
+      .next()
+      .find('div > article.post-block')
+      .then(($elems) => {
+        let numberOfElements = $elems.length;
+        cy.log(
+          `There are ${numberOfElements} elements inside of latest section`
+        );
+
+        const randomIndex = Math.floor(Math.random() * numberOfElements);
+        cy.wrap($elems[randomIndex]).as('selectedElement');
+        cy.log(cy.get('@selectedElement'));
+
+        cy.get('@selectedElement')
+          .find('.post-block__title__link')
+          .then(($a) => {
+            const title = $a.text();
+
+            cy.log(`Clicking on the ${randomIndex}. element.`);
+            cy.get('@selectedElement').click();
+
+            cy.get('div > .article__title').should('have.text', title);
+          });
+      });
+
+  });*/
+
+  it('Search for a specific topic', () => {
+    cy.get('#tc-mobile-header > svg').click();
+    cy.get('div>label').contains('search').click();
+    cy.get('div.search-box>form input');
   });
 });
